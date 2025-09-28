@@ -74,25 +74,76 @@
             transition: width 0.3s ease;
         }
 
-        /* Custom logo */
-        .custom-logo {
+        /* BIU Logo */
+        .biu-logo {
             position: fixed;
             top: 12px;
             left: 20px;
             z-index: 1002;
-            background: white;
-            padding: 6px 10px;
-            border-radius: 6px;
-            box-shadow: 0 2px 10px rgba(0, 47, 93, 0.2);
-            font-weight: 700;
-            color: #002f5d;
-            font-size: 12px;
-            transition: all 0.3s ease;
+            transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            transform-style: preserve-3d;
+            cursor: pointer;
         }
 
-        .custom-logo:hover {
+        .biu-logo:hover {
+            transform: translateY(-3px) translateZ(20px) rotateX(5deg);
+        }
+
+        .biu-logo-container {
+            background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+            padding: 8px 12px;
+            border-radius: 10px;
+            box-shadow: 
+                0 4px 15px rgba(0, 47, 93, 0.2),
+                0 2px 8px rgba(0, 0, 0, 0.1),
+                inset 0 1px 0 rgba(255, 255, 255, 0.8);
+            border: 1px solid rgba(0, 47, 93, 0.1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .biu-logo:hover .biu-logo-container {
+            box-shadow: 
+                0 8px 25px rgba(0, 47, 93, 0.3),
+                0 4px 15px rgba(0, 0, 0, 0.15),
+                inset 0 1px 0 rgba(255, 255, 255, 0.9),
+                0 0 20px rgba(247, 201, 72, 0.2);
             transform: scale(1.05);
-            box-shadow: 0 4px 15px rgba(0, 47, 93, 0.3);
+        }
+
+        .biu-logo-container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(247, 201, 72, 0.2), transparent);
+            transition: left 0.6s ease;
+        }
+
+        .biu-logo:hover .biu-logo-container::before {
+            left: 100%;
+        }
+
+        .biu-text {
+            font-weight: 700;
+            font-size: 14px;
+            background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 50%, #1e40af 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+            position: relative;
+            z-index: 2;
+        }
+
+        .biu-subtitle {
+            font-size: 8px;
+            color: #64748b;
+            font-weight: 500;
+            margin-top: 2px;
+            letter-spacing: 0.5px;
         }
 
         /* Main container */
@@ -955,9 +1006,13 @@
     <!-- Progress bar -->
     <div class="progress-bar" id="progressBar"></div>
 
-    <!-- Custom logo -->
-    <div class="custom-logo">
-        DC-SRL
+    <!-- BIU Logo -->
+    <div class="biu-logo">
+        <div class="biu-logo-container">
+            <div class="biu-text">BIU</div>
+            <div class="biu-subtitle">BROWARD INTERNATIONAL</div>
+            <div class="biu-subtitle">UNIVERSITY</div>
+        </div>
     </div>
 
     <!-- Navigation -->
@@ -1291,20 +1346,20 @@
             </div>
         </section>
 
-        <!-- Slide 7: Estructura de Deuda -->
+        <!-- Slide 7: Estructura de Deuda - CORREGIDA -->
         <section class="slide-section regular-slide" id="slide7">
             <div class="slide-container fade-in">
                 <div class="side-decoration left"></div>
-                <div class="content">
-                    <div class="title-container" style="text-align: center; margin-bottom: 20px;">
+                <div class="content" style="padding: 30px 60px;">
+                    <div class="title-container" style="text-align: center; margin-bottom: 15px;">
                         <h1 class="title regular-title text-3xl">Estructura de la deuda original</h1>
-                        <div class="accent-bar" style="margin: 0 auto 15px;"></div>
+                        <div class="accent-bar" style="margin: 0 auto 10px;"></div>
                     </div>
                     <div style="display: flex; flex-direction: column; align-items: center; flex-grow: 1;">
-                        <div style="font-family: 'Open Sans', sans-serif; font-size: 16px; text-align: center; margin-bottom: 20px; color: #333; max-width: 800px;">
+                        <div style="font-family: 'Open Sans', sans-serif; font-size: 14px; text-align: center; margin-bottom: 15px; color: #333; max-width: 900px;">
                             <p>La empresa mantenía una línea de crédito por un monto total de RD$1,000,000,000, de la cual había recibido un desembolso de RD$450,000,000. Las obligaciones acumuladas alcanzaron RD$531,715,046 distribuidas en 12 pagarés con diferentes fechas de vencimiento.</p>
                         </div>
-                        <div style="display: flex; justify-content: center; gap: 30px; font-size: 12px; margin-bottom: 20px;">
+                        <div style="display: flex; justify-content: center; gap: 30px; font-size: 12px; margin-bottom: 15px;">
                             <div style="display: flex; align-items: center; gap: 8px;">
                                 <span style="color: #e53e3e; font-size: 16px;">■</span> Vencido
                             </div>
@@ -1315,32 +1370,34 @@
                                 <span style="color: #2b6cb0; font-size: 16px;">■</span> Por vencer
                             </div>
                         </div>
-                        <table class="data-table">
-                            <thead>
-                                <tr>
-                                    <th>Pagaré</th>
-                                    <th>Monto (RD$)</th>
-                                    <th>Días al Vencimiento</th>
-                                    <th>Estatus</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr><td>1</td><td>44,986,725</td><td>98</td><td class="status-vencido">Vencido</td></tr>
-                                <tr><td>2</td><td>44,104,632</td><td>60</td><td class="status-vencido">Vencido</td></tr>
-                                <tr><td>3</td><td>43,239,835</td><td>30</td><td class="status-vencido">Vencido</td></tr>
-                                <tr><td>4</td><td>43,125,000</td><td>0</td><td class="status-ff">FF</td></tr>
-                                <tr><td>5</td><td>39,564,220</td><td>35</td><td class="status-pending">Por vencer</td></tr>
-                                <tr><td>6</td><td>44,320,831</td><td>68</td><td class="status-pending">Por vencer</td></tr>
-                                <tr><td>7</td><td>44,764,039</td><td>96</td><td class="status-pending">Por vencer</td></tr>
-                                <tr><td>8</td><td>44,789,823</td><td>134</td><td class="status-pending">Por vencer</td></tr>
-                                <tr><td>9</td><td>44,834,613</td><td>164</td><td class="status-pending">Por vencer</td></tr>
-                                <tr><td>10</td><td>45,238,125</td><td>194</td><td class="status-pending">Por vencer</td></tr>
-                                <tr><td>11</td><td>46,142,887</td><td>224</td><td class="status-pending">Por vencer</td></tr>
-                                <tr><td>12</td><td>46,604,316</td><td>254</td><td class="status-pending">Por vencer</td></tr>
-                                <tr style="background-color: #e8f0f8;"><td><strong>Total</strong></td><td><strong>531,715,046</strong></td><td colspan="2"></td></tr>
-                            </tbody>
-                        </table>
-                        <div style="font-size: 12px; font-style: italic; color: #666; margin-top: 15px;">Fuente: Registros financieros de Dominican Constructora, SRL (2025)</div>
+                        <div style="width: 95%; max-height: 420px; overflow-y: auto;">
+                            <table class="data-table" style="width: 100%; font-size: 12px;">
+                                <thead>
+                                    <tr>
+                                        <th style="padding: 8px 10px;">Pagaré</th>
+                                        <th style="padding: 8px 10px;">Monto (RD$)</th>
+                                        <th style="padding: 8px 10px;">Días al Vencimiento</th>
+                                        <th style="padding: 8px 10px;">Estatus</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr><td style="padding: 6px 10px;">1</td><td style="padding: 6px 10px;">44,986,725</td><td style="padding: 6px 10px;">98</td><td class="status-vencido" style="padding: 6px 10px;">Vencido</td></tr>
+                                    <tr><td style="padding: 6px 10px;">2</td><td style="padding: 6px 10px;">44,104,632</td><td style="padding: 6px 10px;">60</td><td class="status-vencido" style="padding: 6px 10px;">Vencido</td></tr>
+                                    <tr><td style="padding: 6px 10px;">3</td><td style="padding: 6px 10px;">43,239,835</td><td style="padding: 6px 10px;">30</td><td class="status-vencido" style="padding: 6px 10px;">Vencido</td></tr>
+                                    <tr><td style="padding: 6px 10px;">4</td><td style="padding: 6px 10px;">43,125,000</td><td style="padding: 6px 10px;">0</td><td class="status-ff" style="padding: 6px 10px;">FF</td></tr>
+                                    <tr><td style="padding: 6px 10px;">5</td><td style="padding: 6px 10px;">39,564,220</td><td style="padding: 6px 10px;">35</td><td class="status-pending" style="padding: 6px 10px;">Por vencer</td></tr>
+                                    <tr><td style="padding: 6px 10px;">6</td><td style="padding: 6px 10px;">44,320,831</td><td style="padding: 6px 10px;">68</td><td class="status-pending" style="padding: 6px 10px;">Por vencer</td></tr>
+                                    <tr><td style="padding: 6px 10px;">7</td><td style="padding: 6px 10px;">44,764,039</td><td style="padding: 6px 10px;">96</td><td class="status-pending" style="padding: 6px 10px;">Por vencer</td></tr>
+                                    <tr><td style="padding: 6px 10px;">8</td><td style="padding: 6px 10px;">44,789,823</td><td style="padding: 6px 10px;">134</td><td class="status-pending" style="padding: 6px 10px;">Por vencer</td></tr>
+                                    <tr><td style="padding: 6px 10px;">9</td><td style="padding: 6px 10px;">44,834,613</td><td style="padding: 6px 10px;">164</td><td class="status-pending" style="padding: 6px 10px;">Por vencer</td></tr>
+                                    <tr><td style="padding: 6px 10px;">10</td><td style="padding: 6px 10px;">45,238,125</td><td style="padding: 6px 10px;">194</td><td class="status-pending" style="padding: 6px 10px;">Por vencer</td></tr>
+                                    <tr><td style="padding: 6px 10px;">11</td><td style="padding: 6px 10px;">46,142,887</td><td style="padding: 6px 10px;">224</td><td class="status-pending" style="padding: 6px 10px;">Por vencer</td></tr>
+                                    <tr><td style="padding: 6px 10px;">12</td><td style="padding: 6px 10px;">46,604,316</td><td style="padding: 6px 10px;">254</td><td class="status-pending" style="padding: 6px 10px;">Por vencer</td></tr>
+                                    <tr style="background-color: #e8f0f8; font-weight: bold;"><td style="padding: 8px 10px;"><strong>Total</strong></td><td style="padding: 8px 10px;"><strong>531,715,046</strong></td><td colspan="2" style="padding: 8px 10px;"></td></tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div style="font-size: 12px; font-style: italic; color: #666; margin-top: 10px;">Fuente: Registros financieros de Dominican Constructora, SRL (2025)</div>
                     </div>
                 </div>
                 <div class="logo">
@@ -1354,7 +1411,7 @@
             </div>
         </section>
 
-        <!-- Slide 8: Proceso de Reestructuración -->
+        <!-- Slide 8: Proceso de Reestructuración - CORREGIDA -->
         <section class="slide-section regular-slide" id="slide8">
             <div class="slide-container fade-in">
                 <div class="side-decoration left"></div>
@@ -1379,19 +1436,19 @@
                                     <li>8 pagos posteriores a la fecha focal: 35, 68, 96, 134, 164, 194, 224 y 254 días.</li>
                                 </ul>
                                 <p>Sustitución de múltiples pagarés por 10 pagos iguales de RD$49,316,487.54 cada uno.</p>
-                                <div style="margin-top: 20px;">
-                                    <p><strong>Coeficiente utilizado en la reestructuración:</strong></p>
-                                    <div class="coefficient-box">
-                                        <div class="coefficient-title">Coeficiente de Valor Presente:</div>
-                                        <div class="coefficient-value">9.66488821</div>
-                                    </div>
-                                </div>
                             </div>
                         </div>
                         <div class="image-column">
                             <div class="image-container">
                                 <img alt="Diagrama del proceso de reestructuración de deuda" src="https://page.gensparksite.com/slides_images/554ac9bfa6f241924a7e45345666af08.jpg"/>
                             </div>
+                        </div>
+                    </div>
+                    <!-- Coeficiente destacado con bordes amarillos -->
+                    <div style="position: absolute; bottom: 120px; left: 80px; z-index: 15;">
+                        <div style="background-color: #002f5d; border: 3px solid #f7c948; border-radius: 8px; padding: 12px 20px; box-shadow: 0 6px 20px rgba(0,0,0,0.3); animation: pulse 2s infinite;">
+                            <div style="color: #f7c948; font-size: 14px; font-weight: 600; margin-bottom: 5px; font-family: 'Montserrat', sans-serif;">Coeficiente de Valor Presente:</div>
+                            <div style="color: #f7c948; font-size: 22px; font-weight: 700; font-family: 'Montserrat', sans-serif; letter-spacing: 1px;">9.66488821</div>
                         </div>
                     </div>
                     <!-- Bank logo -->
@@ -1545,7 +1602,7 @@
             </div>
         </section>
 
-        <!-- Slide 11: Beneficios -->
+        <!-- Slide 11: Beneficios - CORREGIDA -->
         <section class="slide-section regular-slide" id="slide11">
             <div class="slide-container fade-in">
                 <div class="side-decoration left"></div>
