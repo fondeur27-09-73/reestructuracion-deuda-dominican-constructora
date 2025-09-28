@@ -1,0 +1,1146 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reestructuración de Deuda Corporativa - Dominican Constructora, SRL</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            font-family: 'Montserrat', sans-serif;
+            background-color: #f8fafc;
+        }
+        
+        .presentation-container {
+            max-width: 1280px;
+            margin: 0 auto;
+            background-color: white;
+            min-height: 100vh;
+            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+        }
+        
+        .slide {
+            width: 100%;
+            min-height: 720px;
+            position: relative;
+            overflow: hidden;
+            background-color: #f5f7fa;
+            border-bottom: 2px solid #e2e8f0;
+        }
+        
+        .slide-content {
+            position: relative;
+            z-index: 10;
+            height: 720px;
+            display: flex;
+            flex-direction: column;
+            padding: 40px 80px;
+        }
+        
+        .slide-title {
+            font-weight: 700;
+            line-height: 1.2;
+            color: #002f5d;
+            margin-bottom: 8px;
+            text-align: center;
+        }
+        
+        .accent-bar {
+            width: 120px;
+            height: 5px;
+            background-color: #f7c948;
+            margin: 0 auto 20px;
+        }
+        
+        .side-decoration {
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 100%;
+            width: 10px;
+            background-color: #002f5d;
+        }
+        
+        .logo {
+            position: absolute;
+            right: 40px;
+            bottom: 30px;
+            z-index: 20;
+        }
+        
+        .navigation {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 100;
+            background: white;
+            padding: 10px;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+        
+        .nav-button {
+            padding: 8px 15px;
+            margin: 0 5px;
+            background-color: #002f5d;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .nav-button:hover {
+            background-color: #f7c948;
+            color: #002f5d;
+            transform: translateY(-2px);
+        }
+        
+        .nav-button:disabled {
+            background-color: #ccc;
+            cursor: not-allowed;
+            transform: none;
+        }
+        
+        .slide-counter {
+            margin: 0 10px;
+            font-weight: 600;
+            color: #002f5d;
+        }
+        
+        /* Efectos dinámicos */
+        .hover-lift:hover {
+            transform: translateY(-5px);
+            transition: all 0.3s ease;
+        }
+        
+        .metric-card {
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        
+        .metric-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+        }
+        
+        .chart-bar {
+            transition: all 0.3s ease;
+        }
+        
+        .chart-bar:hover {
+            transform: translateY(-10px);
+            filter: brightness(1.1);
+        }
+        
+        @keyframes pulse {
+            0% { box-shadow: 0 0 0 0 rgba(247, 201, 72, 0.4); }
+            70% { box-shadow: 0 0 0 10px rgba(247, 201, 72, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(247, 201, 72, 0); }
+        }
+        
+        .pulse {
+            animation: pulse 2s infinite;
+        }
+        
+        .table-hover tr:hover {
+            background-color: rgba(247, 201, 72, 0.1);
+            transform: scale(1.02);
+            transition: all 0.3s ease;
+        }
+        
+        .equation-box {
+            background-color: #f8f9fa;
+            border-left: 4px solid #002f5d;
+            padding: 15px;
+            margin: 10px 0;
+            border-radius: 5px;
+            font-family: 'Courier New', monospace;
+            transition: all 0.3s ease;
+        }
+        
+        .equation-box:hover {
+            background-color: #e3f2fd;
+            transform: translateX(5px);
+        }
+        
+        /* Responsive */
+        @media (max-width: 1300px) {
+            .presentation-container {
+                max-width: 95%;
+            }
+            .slide-content {
+                padding: 30px 50px;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .slide-content {
+                padding: 20px 30px;
+                height: auto;
+                min-height: 500px;
+            }
+            .slide-title {
+                font-size: 1.5rem;
+            }
+            .navigation {
+                position: relative;
+                top: auto;
+                right: auto;
+                margin: 20px auto;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="presentation-container">
+        <!-- Navegación -->
+        <div class="navigation">
+            <button class="nav-button" onclick="previousSlide()" id="prevBtn">← Anterior</button>
+            <span class="slide-counter" id="slideCounter">1 / 12</span>
+            <button class="nav-button" onclick="nextSlide()" id="nextBtn">Siguiente →</button>
+        </div>
+
+        <!-- Slide 1: Portada -->
+        <div class="slide" id="slide1">
+            <div class="side-decoration"></div>
+            <div class="slide-content">
+                <div style="display: flex; flex-direction: column; justify-content: center; align-items: center; height: 100%; text-align: center;">
+                    <h1 class="slide-title text-5xl mb-6 hover-lift">Reestructuración de Deuda Corporativa</h1>
+                    <div class="accent-bar mb-8"></div>
+                    <h2 class="text-2xl text-gray-700 mb-12 hover-lift">Análisis Teórico y Aplicación Práctica en el Caso de Dominican Constructora, SRL</h2>
+                    
+                    <div class="text-lg text-gray-600 space-y-4">
+                        <p class="hover-lift"><strong>Materia:</strong> Management of Finance and Control</p>
+                        <p class="hover-lift"><strong>Profesor:</strong> Dr. Arturo García Santillán</p>
+                        <p class="hover-lift"><strong>Por:</strong> Ulises Ramírez Fondeur</p>
+                        <p class="hover-lift"><strong>Fecha:</strong> 28 Septiembre del 2025</p>
+                    </div>
+                </div>
+            </div>
+            <div class="logo">
+                <div class="bg-white p-2 rounded shadow hover-lift">
+                    <svg width="100" height="50" viewBox="0 0 100 60">
+                        <rect x="10" y="10" width="80" height="40" fill="#002f5d"/>
+                        <text x="50" y="35" text-anchor="middle" fill="white" font-family="Montserrat" font-size="16" font-weight="bold">DC-SRL</text>
+                    </svg>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 2: Índice -->
+        <div class="slide" id="slide2" style="display: none;">
+            <div class="side-decoration"></div>
+            <div class="slide-content">
+                <h1 class="slide-title text-3xl">Índice de la Presentación</h1>
+                <div class="accent-bar"></div>
+                
+                <div class="grid grid-cols-2 gap-8 mt-8">
+                    <div class="space-y-4">
+                        <div class="hover-lift p-4 bg-white rounded-lg shadow">
+                            <span class="text-2xl font-bold text-blue-900">1.</span>
+                            <span class="ml-4 text-lg">Introducción</span>
+                        </div>
+                        <div class="hover-lift p-4 bg-white rounded-lg shadow">
+                            <span class="text-2xl font-bold text-blue-900">2.</span>
+                            <span class="ml-4 text-lg">Marco teórico</span>
+                        </div>
+                        <div class="hover-lift p-4 bg-white rounded-lg shadow">
+                            <span class="text-2xl font-bold text-blue-900">3.</span>
+                            <span class="ml-4 text-lg">Metodología utilizada</span>
+                        </div>
+                        <div class="hover-lift p-4 bg-white rounded-lg shadow">
+                            <span class="text-2xl font-bold text-blue-900">4.</span>
+                            <span class="ml-4 text-lg">Análisis de la empresa</span>
+                        </div>
+                        <div class="hover-lift p-4 bg-white rounded-lg shadow">
+                            <span class="text-2xl font-bold text-blue-900">5.</span>
+                            <span class="ml-4 text-lg">Estructura de deuda original</span>
+                        </div>
+                        <div class="hover-lift p-4 bg-white rounded-lg shadow">
+                            <span class="text-2xl font-bold text-blue-900">6.</span>
+                            <span class="ml-4 text-lg">Proceso de reestructuración</span>
+                        </div>
+                    </div>
+                    <div class="space-y-4">
+                        <div class="hover-lift p-4 bg-white rounded-lg shadow">
+                            <span class="text-2xl font-bold text-blue-900">7.</span>
+                            <span class="ml-4 text-lg">Resultados obtenidos</span>
+                        </div>
+                        <div class="hover-lift p-4 bg-white rounded-lg shadow">
+                            <span class="text-2xl font-bold text-blue-900">8.</span>
+                            <span class="ml-4 text-lg">Comparación antes y después</span>
+                        </div>
+                        <div class="hover-lift p-4 bg-white rounded-lg shadow">
+                            <span class="text-2xl font-bold text-blue-900">9.</span>
+                            <span class="ml-4 text-lg">Beneficios para la empresa</span>
+                        </div>
+                        <div class="hover-lift p-4 bg-white rounded-lg shadow">
+                            <span class="text-2xl font-bold text-blue-900">10.</span>
+                            <span class="ml-4 text-lg">Lecciones aprendidas</span>
+                        </div>
+                        <div class="hover-lift p-4 bg-white rounded-lg shadow">
+                            <span class="text-2xl font-bold text-blue-900">11.</span>
+                            <span class="ml-4 text-lg">Conclusiones principales</span>
+                        </div>
+                        <div class="hover-lift p-4 bg-white rounded-lg shadow">
+                            <span class="text-2xl font-bold text-blue-900">12.</span>
+                            <span class="ml-4 text-lg">Recomendaciones finales</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="logo">
+                <div class="bg-white p-2 rounded shadow hover-lift">
+                    <svg width="100" height="50" viewBox="0 0 100 60">
+                        <rect x="10" y="10" width="80" height="40" fill="#002f5d"/>
+                        <text x="50" y="35" text-anchor="middle" fill="white" font-family="Montserrat" font-size="16" font-weight="bold">DC-SRL</text>
+                    </svg>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 3: Introducción -->
+        <div class="slide" id="slide3" style="display: none;">
+            <div class="side-decoration"></div>
+            <div class="slide-content">
+                <h1 class="slide-title text-3xl">Introducción: Contexto y relevancia</h1>
+                <div class="accent-bar"></div>
+                
+                <div class="flex items-center h-full">
+                    <div class="w-2/3 pr-8">
+                        <div class="space-y-6 text-lg">
+                            <p class="hover-lift p-4 bg-white rounded-lg shadow">
+                                La <strong>reestructuración de deuda corporativa</strong> representa una herramienta financiera fundamental para empresas que enfrentan dificultades de liquidez y riesgo de insolvencia, especialmente en sectores intensivos en capital como la construcción.
+                            </p>
+                            
+                            <p class="hover-lift p-4 bg-white rounded-lg shadow">
+                                En República Dominicana, este sector enfrenta desafíos particulares:
+                            </p>
+                            
+                            <ul class="space-y-3">
+                                <li class="hover-lift p-3 bg-white rounded-lg shadow flex items-center">
+                                    <span class="w-2 h-2 bg-yellow-500 rounded-full mr-3"></span>
+                                    Alta dependencia de financiamiento externo para proyectos
+                                </li>
+                                <li class="hover-lift p-3 bg-white rounded-lg shadow flex items-center">
+                                    <span class="w-2 h-2 bg-yellow-500 rounded-full mr-3"></span>
+                                    Ciclos largos de retorno de inversión
+                                </li>
+                                <li class="hover-lift p-3 bg-blue-900 rounded-lg shadow flex items-center text-white">
+                                    <span class="w-2 h-2 bg-yellow-500 rounded-full mr-3"></span>
+                                    Volatilidad en costos de materiales e insumos
+                                </li>
+                                <li class="hover-lift p-3 bg-white rounded-lg shadow flex items-center">
+                                    <span class="w-2 h-2 bg-yellow-500 rounded-full mr-3"></span>
+                                    Fluctuaciones en la demanda de mercado
+                                </li>
+                            </ul>
+                            
+                            <p class="hover-lift p-4 bg-blue-50 rounded-lg border-l-4 border-blue-900 text-blue-900">
+                                El caso de <strong>Dominican Constructora, SRL</strong> ilustra cómo una reestructuración estratégica puede:
+                                <br>• Evitar litigios costosos con acreedores
+                                <br>• Preservar fuentes de empleo y capital productivo
+                                <br>• Contribuir a la estabilidad del sistema financiero
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <div class="w-1/3">
+                        <img src="https://eldinero.com.do/wp-content/uploads/construccion-4.webp" alt="Sector construcción República Dominicana" class="w-full rounded-lg shadow-lg hover-lift" style="transition: transform 0.3s ease;">
+                    </div>
+                </div>
+            </div>
+            <div class="logo">
+                <div class="bg-white p-2 rounded shadow hover-lift">
+                    <svg width="100" height="50" viewBox="0 0 100 60">
+                        <rect x="10" y="10" width="80" height="40" fill="#002f5d"/>
+                        <text x="50" y="35" text-anchor="middle" fill="white" font-family="Montserrat" font-size="16" font-weight="bold">DC-SRL</text>
+                    </svg>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 4: Marco Teórico -->
+        <div class="slide" id="slide4" style="display: none;">
+            <div class="side-decoration"></div>
+            <div class="slide-content">
+                <h1 class="slide-title text-3xl">Marco teórico de la reestructuración de deuda</h1>
+                <div class="accent-bar"></div>
+                
+                <div class="flex items-start h-full">
+                    <div class="w-2/3 pr-8 space-y-6">
+                        <div class="hover-lift p-4 bg-white rounded-lg shadow border-l-4 border-blue-900">
+                            <h3 class="text-lg font-bold text-blue-900 mb-2">Definición conceptual:</h3>
+                            <p class="text-base">Proceso mediante el cual se alteran los términos originales de un contrato de deuda para proporcionar alivio al deudor que experimenta dificultades financieras, preservando simultáneamente los intereses fundamentales del acreedor.</p>
+                        </div>
+                        
+                        <div class="hover-lift p-4 bg-white rounded-lg shadow border-l-4 border-yellow-500">
+                            <h3 class="text-lg font-bold text-blue-900 mb-3">Clasificación de técnicas:</h3>
+                            <p class="text-sm mb-2"><strong>Según Dedu, Lăzărescu y Nitescu (2009):</strong></p>
+                            <ul class="space-y-2">
+                                <li class="flex items-center">
+                                    <span class="w-2 h-2 bg-yellow-500 rounded-full mr-3"></span>
+                                    Reestructuración de cronograma de pagos (modificación de plazos)
+                                </li>
+                                <li class="flex items-center">
+                                    <span class="w-2 h-2 bg-yellow-500 rounded-full mr-3"></span>
+                                    Cancelación parcial de deuda (quita o descuento)
+                                </li>
+                                <li class="flex items-center">
+                                    <span class="w-2 h-2 bg-yellow-500 rounded-full mr-3"></span>
+                                    Intercambio de deuda por acciones (debt-to-equity swap)
+                                </li>
+                            </ul>
+                        </div>
+                        
+                        <div class="hover-lift p-4 bg-blue-50 rounded-lg shadow">
+                            <h3 class="text-lg font-bold text-blue-900 mb-2">Referencias académicas:</h3>
+                            <p class="text-sm">García-Santillán, Howe y Venegas-Martínez (2017) • Dedu, Lăzărescu y Nitescu (2009) • Teoría del valor presente neto aplicada a restructuraciones corporativas</p>
+                        </div>
+                    </div>
+                    
+                    <div class="w-1/3">
+                        <div class="bg-white p-4 rounded-lg shadow-lg hover-lift">
+                            <h4 class="text-center font-bold text-blue-900 mb-4">Bancos Múltiples Supervisados por la Superintendencia de Bancos</h4>
+                            <div class="grid grid-cols-2 gap-2 text-xs">
+                                <img src="https://santanaripoll.com/wp-content/uploads/2022/02/Entidades-financieras-con-capital-extranjero-en-la-Republica-Dominicana.jpg" alt="Sistema bancario dominicano" class="col-span-2 w-full rounded hover:scale-105 transition-transform">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="logo">
+                <div class="bg-white p-2 rounded shadow hover-lift">
+                    <svg width="100" height="50" viewBox="0 0 100 60">
+                        <rect x="10" y="10" width="80" height="40" fill="#002f5d"/>
+                        <text x="50" y="35" text-anchor="middle" fill="white" font-family="Montserrat" font-size="16" font-weight="bold">DC-SRL</text>
+                    </svg>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 5: Metodología -->
+        <div class="slide" id="slide5" style="display: none;">
+            <div class="side-decoration"></div>
+            <div class="slide-content">
+                <h1 class="slide-title text-3xl">Metodología utilizada en el caso</h1>
+                <div class="accent-bar"></div>
+                
+                <div class="flex items-start h-full">
+                    <div class="w-2/3 pr-6 space-y-4">
+                        <p class="hover-lift p-3 bg-white rounded-lg shadow text-base">
+                            El caso se abordó utilizando los <strong>modelos matemáticos propuestos por García-Santillán</strong>, implementando ecuaciones equivalentes para la reestructuración de deuda:
+                        </p>
+                        
+                        <div class="equation-box">
+                            <strong>VDO = DO₁(1 + i×t₁/360) + ... + DOⱼ(1 + i×tⱼ/360)</strong>
+                        </div>
+                        
+                        <p class="hover-lift p-3 bg-white rounded-lg shadow text-sm">
+                            La metodología aplicó <strong>tratamiento diferenciado</strong> según el estatus de cada obligación:
+                        </p>
+                        
+                        <div class="space-y-3">
+                            <div class="hover-lift p-3 bg-white rounded-lg shadow">
+                                <h4 class="font-bold text-blue-900">📈 Documentos vencidos:</h4>
+                                <p class="text-sm">Actualización con tasa efectiva del 15% anual</p>
+                                <div class="equation-box text-sm">
+                                    VF = VP × (1 + i)ⁿ, donde i = 1.2528767% mensual
+                                </div>
+                            </div>
+                            
+                            <div class="hover-lift p-3 bg-white rounded-lg shadow">
+                                <h4 class="font-bold text-blue-900">📉 Documentos no vencidos:</h4>
+                                <p class="text-sm">Descuento a valor presente con tasa nominal del 10% anual</p>
+                                <div class="equation-box text-sm">
+                                    VP = VF / (1 + i)ⁿ, donde i = 0.9041096% mensual
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="hover-lift p-3 bg-blue-50 rounded-lg border-l-4 border-blue-900">
+                            <p class="text-sm"><strong>El nuevo valor de deuda (Y) se determinó mediante:</strong></p>
+                            <div class="equation-box text-sm">
+                                Y = VDN / (Suma de coeficientes a la fecha focal)
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="w-1/3">
+                        <div class="bg-white p-4 rounded-lg shadow-lg hover-lift">
+                            <img src="https://cdn1.genspark.ai/user-upload-image/gpt_image_generated/77087d27-9f62-45f8-b38a-390f08826c00_wm" alt="Diagrama proceso reestructuración" class="w-full rounded hover:scale-105 transition-transform">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="logo">
+                <div class="bg-white p-2 rounded shadow hover-lift">
+                    <svg width="100" height="50" viewBox="0 0 100 60">
+                        <rect x="10" y="10" width="80" height="40" fill="#002f5d"/>
+                        <text x="50" y="35" text-anchor="middle" fill="white" font-family="Montserrat" font-size="16" font-weight="bold">DC-SRL</text>
+                    </svg>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 6: Perfil Empresarial -->
+        <div class="slide" id="slide6" style="display: none;">
+            <div class="side-decoration"></div>
+            <div class="slide-content">
+                <h1 class="slide-title text-3xl">Perfil de Dominican Constructora, SRL</h1>
+                <div class="accent-bar"></div>
+                
+                <div class="flex items-start h-full">
+                    <div class="w-2/3 pr-8 space-y-6">
+                        <div class="hover-lift p-4 bg-white rounded-lg shadow border-l-4 border-blue-900">
+                            <h3 class="text-xl font-bold text-blue-900 mb-3">Dominican Constructora, SRL</h3>
+                            <p class="text-base mb-4">Empresa especializada en el desarrollo de proyectos de infraestructura en la República Dominicana, con enfoque en edificaciones comerciales, residenciales y obras civiles de gran envergadura.</p>
+                        </div>
+                        
+                        <div class="grid grid-cols-2 gap-4">
+                            <div class="hover-lift p-4 bg-white rounded-lg shadow">
+                                <h4 class="font-bold text-blue-900 mb-2">🏗️ Líneas de Negocio</h4>
+                                <ul class="text-sm space-y-1">
+                                    <li>• Construcción de edificios</li>
+                                    <li>• Infraestructura vial</li>
+                                    <li>• Proyectos inmobiliarios</li>
+                                    <li>• Obras civiles</li>
+                                </ul>
+                            </div>
+                            
+                            <div class="hover-lift p-4 bg-white rounded-lg shadow">
+                                <h4 class="font-bold text-blue-900 mb-2">📊 Importancia Sectorial</h4>
+                                <ul class="text-sm space-y-1">
+                                    <li>• Contribuye al PIB nacional</li>
+                                    <li>• Genera empleo directo</li>
+                                    <li>• Impulsa cadena de suministros</li>
+                                    <li>• Desarrollo urbano</li>
+                                </ul>
+                            </div>
+                        </div>
+                        
+                        <div class="hover-lift p-4 bg-yellow-50 rounded-lg border-l-4 border-yellow-500">
+                            <h4 class="font-bold text-blue-900 mb-2">🎯 Contexto de la Reestructuración</h4>
+                            <p class="text-sm">La empresa enfrentó dificultades de liquidez derivadas de la volatilidad del sector construcción y el impacto de factores macroeconómicos, haciendo necesaria una reestructuración estratégica de su perfil de deuda para asegurar la continuidad operacional.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="w-1/3">
+                        <img src="https://estrella.com.do/wp-content/uploads/2021/04/Asociaci%C3%B3n-Cibao-Ingenieria-Estrella-1.jpg" alt="Construcción en República Dominicana" class="w-full rounded-lg shadow-lg hover-lift mb-4" style="transition: transform 0.3s ease, filter 0.3s ease;">
+                    </div>
+                </div>
+            </div>
+            <div class="logo">
+                <div class="bg-white p-2 rounded shadow hover-lift">
+                    <svg width="100" height="50" viewBox="0 0 100 60">
+                        <rect x="10" y="10" width="80" height="40" fill="#002f5d"/>
+                        <text x="50" y="35" text-anchor="middle" fill="white" font-family="Montserrat" font-size="16" font-weight="bold">DC-SRL</text>
+                    </svg>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 7: Estructura de Deuda -->
+        <div class="slide" id="slide7" style="display: none;">
+            <div class="side-decoration"></div>
+            <div class="slide-content">
+                <h1 class="slide-title text-3xl">Estructura de la deuda original</h1>
+                <div class="accent-bar"></div>
+                
+                <div class="text-center mb-4">
+                    <p class="text-sm text-gray-600">La empresa mantenía una línea de crédito por un monto total de RD$1,000,000,000, de la cual había recibido un desembolso de RD$450,000,000. Las obligaciones acumuladas alcanzaron RD$531,715,046 distribuidas en 12 pagarés con diferentes fechas de vencimiento.</p>
+                </div>
+                
+                <!-- Leyenda de colores -->
+                <div class="flex justify-center mb-4 space-x-6">
+                    <div class="flex items-center">
+                        <div class="w-4 h-4 bg-red-500 rounded mr-2"></div>
+                        <span class="text-sm">Vencido</span>
+                    </div>
+                    <div class="flex items-center">
+                        <div class="w-4 h-4 bg-yellow-500 rounded mr-2"></div>
+                        <span class="text-sm">Fecha Focal (FF)</span>
+                    </div>
+                    <div class="flex items-center">
+                        <div class="w-4 h-4 bg-blue-500 rounded mr-2"></div>
+                        <span class="text-sm">Por vencer</span>
+                    </div>
+                </div>
+                
+                <div class="overflow-auto" style="max-height: 480px;">
+                    <table class="w-full bg-white rounded-lg shadow-lg table-hover" style="width: 90%; max-width: 900px; margin: 0 auto; font-size: 11px;">
+                        <thead>
+                            <tr style="background-color: #002f5d; color: white;">
+                                <th style="padding: 6px; text-align: center; font-weight: 600; font-size: 12px;">Pagaré</th>
+                                <th style="padding: 6px; text-align: center; font-weight: 600; font-size: 12px;">Monto (RD$)</th>
+                                <th style="padding: 6px; text-align: center; font-weight: 600; font-size: 12px;">Días al Vencimiento</th>
+                                <th style="padding: 6px; text-align: center; font-weight: 600; font-size: 12px;">Estatus</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr style="background-color: #ffebee;">
+                                <td style="padding: 4px; text-align: center; font-weight: 600;">1</td>
+                                <td style="padding: 4px; text-align: right;">44,986,725</td>
+                                <td style="padding: 4px; text-align: center;">98</td>
+                                <td style="padding: 4px; text-align: center; color: #d32f2f; font-weight: 600;">Vencido</td>
+                            </tr>
+                            <tr style="background-color: #ffebee;">
+                                <td style="padding: 4px; text-align: center; font-weight: 600;">2</td>
+                                <td style="padding: 4px; text-align: right;">44,104,632</td>
+                                <td style="padding: 4px; text-align: center;">60</td>
+                                <td style="padding: 4px; text-align: center; color: #d32f2f; font-weight: 600;">Vencido</td>
+                            </tr>
+                            <tr style="background-color: #ffebee;">
+                                <td style="padding: 4px; text-align: center; font-weight: 600;">3</td>
+                                <td style="padding: 4px; text-align: right;">43,239,835</td>
+                                <td style="padding: 4px; text-align: center;">30</td>
+                                <td style="padding: 4px; text-align: center; color: #d32f2f; font-weight: 600;">Vencido</td>
+                            </tr>
+                            <tr style="background-color: #fff8e1;">
+                                <td style="padding: 4px; text-align: center; font-weight: 600;">4</td>
+                                <td style="padding: 4px; text-align: right;">43,125,000</td>
+                                <td style="padding: 4px; text-align: center;">0</td>
+                                <td style="padding: 4px; text-align: center; color: #f57c00; font-weight: 600;">FF</td>
+                            </tr>
+                            <tr>
+                                <td style="padding: 4px; text-align: center; font-weight: 600;">5</td>
+                                <td style="padding: 4px; text-align: right;">39,564,220</td>
+                                <td style="padding: 4px; text-align: center;">35</td>
+                                <td style="padding: 4px; text-align: center; color: #1976d2; font-weight: 600;">Por vencer</td>
+                            </tr>
+                            <tr>
+                                <td style="padding: 4px; text-align: center; font-weight: 600;">6</td>
+                                <td style="padding: 4px; text-align: right;">44,320,831</td>
+                                <td style="padding: 4px; text-align: center;">68</td>
+                                <td style="padding: 4px; text-align: center; color: #1976d2; font-weight: 600;">Por vencer</td>
+                            </tr>
+                            <tr>
+                                <td style="padding: 4px; text-align: center; font-weight: 600;">7</td>
+                                <td style="padding: 4px; text-align: right;">44,764,039</td>
+                                <td style="padding: 4px; text-align: center;">96</td>
+                                <td style="padding: 4px; text-align: center; color: #1976d2; font-weight: 600;">Por vencer</td>
+                            </tr>
+                            <tr>
+                                <td style="padding: 4px; text-align: center; font-weight: 600;">8</td>
+                                <td style="padding: 4px; text-align: right;">44,789,823</td>
+                                <td style="padding: 4px; text-align: center;">134</td>
+                                <td style="padding: 4px; text-align: center; color: #1976d2; font-weight: 600;">Por vencer</td>
+                            </tr>
+                            <tr>
+                                <td style="padding: 4px; text-align: center; font-weight: 600;">9</td>
+                                <td style="padding: 4px; text-align: right;">44,834,613</td>
+                                <td style="padding: 4px; text-align: center;">164</td>
+                                <td style="padding: 4px; text-align: center; color: #1976d2; font-weight: 600;">Por vencer</td>
+                            </tr>
+                            <tr>
+                                <td style="padding: 4px; text-align: center; font-weight: 600;">10</td>
+                                <td style="padding: 4px; text-align: right;">45,238,125</td>
+                                <td style="padding: 4px; text-align: center;">194</td>
+                                <td style="padding: 4px; text-align: center; color: #1976d2; font-weight: 600;">Por vencer</td>
+                            </tr>
+                            <tr>
+                                <td style="padding: 4px; text-align: center; font-weight: 600;">11</td>
+                                <td style="padding: 4px; text-align: right;">46,142,887</td>
+                                <td style="padding: 4px; text-align: center;">224</td>
+                                <td style="padding: 4px; text-align: center; color: #1976d2; font-weight: 600;">Por vencer</td>
+                            </tr>
+                            <tr>
+                                <td style="padding: 4px; text-align: center; font-weight: 600;">12</td>
+                                <td style="padding: 4px; text-align: right;">46,604,316</td>
+                                <td style="padding: 4px; text-align: center;">254</td>
+                                <td style="padding: 4px; text-align: center; color: #1976d2; font-weight: 600;">Por vencer</td>
+                            </tr>
+                            <tr style="background-color: #f5f5f5; font-weight: 700;">
+                                <td style="padding: 6px; text-align: center;">Total</td>
+                                <td style="padding: 6px; text-align: right;">531,715,046</td>
+                                <td style="padding: 6px; text-align: center;">-</td>
+                                <td style="padding: 6px; text-align: center;">-</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                
+                <p class="text-xs text-gray-500 text-center mt-3">Fuente: Registros financieros de Dominican Constructora, SRL (2024)</p>
+            </div>
+            <div class="logo">
+                <div class="bg-white p-2 rounded shadow hover-lift">
+                    <svg width="100" height="50" viewBox="0 0 100 60">
+                        <rect x="10" y="10" width="80" height="40" fill="#002f5d"/>
+                        <text x="50" y="35" text-anchor="middle" fill="white" font-family="Montserrat" font-size="16" font-weight="bold">DC-SRL</text>
+                    </svg>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 8: Proceso de Reestructuración -->
+        <div class="slide" id="slide8" style="display: none;">
+            <div class="side-decoration"></div>
+            <div class="slide-content">
+                <h1 class="slide-title text-3xl">Proceso de Reestructuración</h1>
+                <div class="accent-bar"></div>
+                
+                <div class="flex items-start h-full">
+                    <div class="w-2/3 pr-6 space-y-4">
+                        <p class="hover-lift p-3 bg-white rounded-lg shadow text-base">
+                            El proceso de reestructuración involucró <strong>negociaciones estratégicas</strong> con el Banco de Reservas para evitar un litigio legal potencialmente costoso para ambas partes.
+                        </p>
+                        
+                        <div class="hover-lift p-3 bg-blue-50 rounded-lg shadow">
+                            <h4 class="font-bold text-blue-900 mb-2">Condiciones de reestructuración:</h4>
+                            <ul class="space-y-2 text-sm">
+                                <li class="flex items-center">
+                                    <span class="w-2 h-2 bg-yellow-500 rounded-full mr-3"></span>
+                                    Documentos vencidos: Revaluación con tasa del 15% capitalizable mensualmente (30 días)
+                                </li>
+                                <li class="flex items-center">
+                                    <span class="w-2 h-2 bg-yellow-500 rounded-full mr-3"></span>
+                                    Documentos no vencidos: Descuento a valor presente con tasa nominal del 10% capitalizable mensualmente
+                                </li>
+                            </ul>
+                        </div>
+                        
+                        <div class="hover-lift p-3 bg-white rounded-lg shadow">
+                            <h4 class="font-bold text-blue-900 mb-2">El nuevo esquema de pagos se realiza de la siguiente forma:</h4>
+                            <ul class="space-y-2 text-sm">
+                                <li class="flex items-center">
+                                    <span class="w-2 h-2 bg-blue-500 rounded-full mr-3"></span>
+                                    1 pago 15 días antes de la fecha focal
+                                </li>
+                                <li class="flex items-center">
+                                    <span class="w-2 h-2 bg-blue-500 rounded-full mr-3"></span>
+                                    1 pago en la fecha focal
+                                </li>
+                                <li class="flex items-center">
+                                    <span class="w-2 h-2 bg-blue-500 rounded-full mr-3"></span>
+                                    8 pagos posteriores a la fecha focal: 35, 68, 96, 134, 164, 194, 224 y 254 días.
+                                </li>
+                            </ul>
+                        </div>
+                        
+                        <p class="hover-lift p-3 bg-white rounded-lg shadow text-sm">
+                            Sustitución de múltiples pagarés por 10 pagos iguales de <strong>RD$49,316,487.54</strong> cada uno.
+                        </p>
+                        
+                        <!-- Coeficiente destacado -->
+                        <div class="pulse" style="margin-top: 15px; padding: 10px 20px; background-color: #002f5d; color: white; border-radius: 8px; border: 2px solid #f7c948; display: inline-block; box-shadow: 0 4px 15px rgba(0,0,0,0.15);">
+                            <div style="font-size: 14px; margin-bottom: 5px; color: #f7c948;">Coeficiente de Valor Presente:</div>
+                            <div style="font-size: 24px; font-weight: 700; color: #f7c948;">9.66488821</div>
+                        </div>
+                    </div>
+                    
+                    <div class="w-1/3">
+                        <div class="bg-white p-4 rounded-lg shadow-lg hover-lift">
+                            <div class="text-center mb-4">
+                                <h4 class="text-sm font-bold text-blue-900">REESTRUCTURACIÓN DE DEUDA</h4>
+                            </div>
+                            <img src="https://cdn1.genspark.ai/user-upload-image/gpt_image_generated/77087d27-9f62-45f8-b38a-390f08826c00_wm" alt="Proceso de reestructuración" class="w-full rounded hover:scale-105 transition-transform">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="logo">
+                <div class="bg-white p-2 rounded shadow hover-lift">
+                    <svg width="100" height="50" viewBox="0 0 100 60">
+                        <rect x="10" y="10" width="80" height="40" fill="#002f5d"/>
+                        <text x="50" y="35" text-anchor="middle" fill="white" font-family="Montserrat" font-size="16" font-weight="bold">DC-SRL</text>
+                    </svg>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 9: Resultados (usando el HTML existente) -->
+        <div class="slide" id="slide9" style="display: none;">
+            <div class="side-decoration"></div>
+            <div class="slide-content">
+                <div style="margin-bottom: 15px; text-align: center;">
+                    <h1 class="slide-title text-3xl">Resultados de la reestructuración</h1>
+                    <div class="accent-bar"></div>
+                </div>
+                <div style="display: flex; flex-direction: column; align-items: center; flex-grow: 1;">
+                    <div style="font-family: 'Open Sans', sans-serif; font-size: 14px; color: #333; max-width: 800px; margin: 0 auto 20px; text-align: center;">
+                        <p>La reestructuración generó un ahorro directo significativo, mejorando sustancialmente el perfil de liquidez de Dominican Constructora, SRL y evitando costos legales asociados a potenciales litigios con el Banco de Reservas.</p>
+                    </div>
+                    
+                    <!-- Gráfico comparativo -->
+                    <div style="width: 80%; max-width: 700px; height: 350px; margin: 0 auto; position: relative;">
+                        <div style="position: absolute; top: 0; left: 0; width: 100%; text-align: center; font-weight: 600; font-size: 16px; color: #002f5d;">REESTRUCTURACIÓN DE DEUDA</div>
+                        <div style="position: absolute; bottom: 28px; left: 120px; width: calc(100% - 240px); height: 2px; background-color: #ccc;"></div>
+                        
+                        <div class="chart-bar" style="position: absolute; bottom: 30px; width: 160px; height: 300px; background-color: #002f5d; left: 180px;">
+                            <div style="position: absolute; width: 160px; text-align: center; font-size: 14px; font-weight: 700; color: white; top: 50%; transform: translateY(-50%);">RD$531,715,046</div>
+                        </div>
+                        <div style="position: absolute; bottom: 0; width: 160px; text-align: center; font-size: 12px; font-weight: 600; color: #002f5d; left: 180px;">DEUDA ORIGINAL</div>
+                        
+                        <div class="chart-bar" style="position: absolute; bottom: 30px; width: 160px; height: 220px; background-color: #1a5794; right: 180px;">
+                            <div style="position: absolute; width: 160px; text-align: center; font-size: 14px; font-weight: 700; color: white; top: 50%; transform: translateY(-50%);">RD$476,638,339</div>
+                        </div>
+                        <div style="position: absolute; bottom: 0; width: 160px; text-align: center; font-size: 12px; font-weight: 600; color: #002f5d; right: 180px;">DEUDA REESTRUCTURADA</div>
+                        
+                        <div style="position: absolute; top: 120px; left: 50%; transform: translateX(-50%); color: #27ae60; font-weight: 700; font-size: 14px; padding: 10px 15px; background-color: rgba(255, 255, 255, 0.8); border-radius: 20px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); border: 1px solid #27ae60;">AHORRO RD$55,076,707</div>
+                    </div>
+                    
+                    <!-- Métricas -->
+                    <div style="display: flex; justify-content: center; gap: 30px; margin-top: 20px;">
+                        <div class="metric-card" style="width: 250px; padding: 15px; border-radius: 8px; box-shadow: 0 2px 15px rgba(0,0,0,0.08); background-color: white; text-align: center;">
+                            <div style="font-size: 14px; font-weight: 600; color: #002f5d; margin-bottom: 5px;">DEUDA ORIGINAL</div>
+                            <div style="font-size: 18px; font-weight: 700; color: #002f5d;">RD$531,715,046</div>
+                            <div style="font-size: 12px; color: #666; margin-top: 5px; font-style: italic;">12 pagarés con diferentes fechas</div>
+                        </div>
+                        <div class="metric-card" style="width: 250px; padding: 15px; border-radius: 8px; box-shadow: 0 2px 15px rgba(0,0,0,0.08); background-color: white; text-align: center;">
+                            <div style="font-size: 14px; font-weight: 600; color: #002f5d; margin-bottom: 5px;">DEUDA REESTRUCTURADA</div>
+                            <div style="font-size: 18px; font-weight: 700; color: #002f5d;">RD$476,638,339</div>
+                            <div style="font-size: 12px; color: #666; margin-top: 5px; font-style: italic;">10 pagos iguales</div>
+                        </div>
+                        <div class="metric-card" style="width: 250px; padding: 15px; border-radius: 8px; box-shadow: 0 2px 15px rgba(0,0,0,0.08); background-color: white; text-align: center;">
+                            <div style="font-size: 14px; font-weight: 600; color: #002f5d; margin-bottom: 5px;">AHORRO GENERADO</div>
+                            <div style="font-size: 18px; font-weight: 700; color: #002f5d;">RD$55,076,707</div>
+                            <div style="font-size: 12px; color: #666; margin-top: 5px; font-style: italic;">10.35% de reducción</div>
+                        </div>
+                    </div>
+                    
+                    <!-- Coeficiente -->
+                    <div class="pulse" style="margin-top: 15px; padding: 10px 20px; background-color: #002f5d; color: white; border-radius: 8px; border: 2px solid #f7c948; display: inline-block; box-shadow: 0 4px 15px rgba(0,0,0,0.15);">
+                        <div style="font-size: 14px; margin-bottom: 5px; color: #f7c948;">Coeficiente de Valor Presente:</div>
+                        <div style="font-size: 24px; font-weight: 700; color: #f7c948;">9.66488821</div>
+                    </div>
+                </div>
+            </div>
+            <div class="logo">
+                <div class="bg-white p-2 rounded shadow hover-lift">
+                    <svg width="100" height="50" viewBox="0 0 100 60">
+                        <rect x="10" y="10" width="80" height="40" fill="#002f5d"/>
+                        <text x="50" y="35" text-anchor="middle" fill="white" font-family="Montserrat" font-size="16" font-weight="bold">DC-SRL</text>
+                    </svg>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 10: Comparación -->
+        <div class="slide" id="slide10" style="display: none;">
+            <div class="side-decoration"></div>
+            <div class="slide-content">
+                <h1 class="slide-title text-3xl">Comparación antes y después de la reestructuración</h1>
+                <div class="accent-bar"></div>
+                
+                <div class="flex justify-center items-center h-full">
+                    <div class="w-full max-w-5xl">
+                        <div class="grid grid-cols-2 gap-8 mb-8">
+                            <!-- Antes -->
+                            <div class="hover-lift bg-red-50 p-6 rounded-lg shadow-lg border-l-4 border-red-500">
+                                <h3 class="text-xl font-bold text-red-700 mb-4 text-center">🔴 ANTES - Situación Original</h3>
+                                <div class="space-y-3">
+                                    <div class="bg-white p-3 rounded shadow">
+                                        <strong>Monto total:</strong> RD$531,715,046
+                                    </div>
+                                    <div class="bg-white p-3 rounded shadow">
+                                        <strong>Estructura:</strong> 12 pagarés diferentes
+                                    </div>
+                                    <div class="bg-white p-3 rounded shadow">
+                                        <strong>Vencimientos:</strong> Fechas variables
+                                    </div>
+                                    <div class="bg-white p-3 rounded shadow">
+                                        <strong>Situación:</strong> 4 documentos vencidos
+                                    </div>
+                                    <div class="bg-white p-3 rounded shadow">
+                                        <strong>Riesgo:</strong> Litigio legal inminente
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Después -->
+                            <div class="hover-lift bg-green-50 p-6 rounded-lg shadow-lg border-l-4 border-green-500">
+                                <h3 class="text-xl font-bold text-green-700 mb-4 text-center">🟢 DESPUÉS - Situación Reestructurada</h3>
+                                <div class="space-y-3">
+                                    <div class="bg-white p-3 rounded shadow">
+                                        <strong>Monto total:</strong> RD$476,638,339
+                                    </div>
+                                    <div class="bg-white p-3 rounded shadow">
+                                        <strong>Estructura:</strong> 10 pagos iguales
+                                    </div>
+                                    <div class="bg-white p-3 rounded shadow">
+                                        <strong>Pagos:</strong> RD$49,316,487.54 c/u
+                                    </div>
+                                    <div class="bg-white p-3 rounded shadow">
+                                        <strong>Cronograma:</strong> Planificado y viable
+                                    </div>
+                                    <div class="bg-white p-3 rounded shadow">
+                                        <strong>Beneficio:</strong> Sin conflictos legales
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Beneficios centrales -->
+                        <div class="text-center">
+                            <div class="hover-lift bg-blue-50 p-6 rounded-lg shadow-lg border-l-4 border-blue-500 inline-block">
+                                <h3 class="text-xl font-bold text-blue-700 mb-3">💰 Beneficio Neto</h3>
+                                <div class="text-3xl font-bold text-green-600 mb-2">RD$55,076,707</div>
+                                <div class="text-lg text-blue-600">Reducción del 10.35%</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="logo">
+                <div class="bg-white p-2 rounded shadow hover-lift">
+                    <svg width="100" height="50" viewBox="0 0 100 60">
+                        <rect x="10" y="10" width="80" height="40" fill="#002f5d"/>
+                        <text x="50" y="35" text-anchor="middle" fill="white" font-family="Montserrat" font-size="16" font-weight="bold">DC-SRL</text>
+                    </svg>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 11: Beneficios -->
+        <div class="slide" id="slide11" style="display: none;">
+            <div class="side-decoration"></div>
+            <div class="slide-content">
+                <h1 class="slide-title text-3xl">Beneficios y lecciones aprendidas</h1>
+                <div class="accent-bar"></div>
+                
+                <div class="flex items-start h-full">
+                    <div class="w-2/3 pr-6 space-y-4">
+                        <!-- Beneficios Cuantitativos -->
+                        <div class="hover-lift p-4 bg-white rounded-lg shadow border-l-4 border-green-500">
+                            <h3 class="text-lg font-bold text-green-700 mb-3 flex items-center">
+                                📊 Beneficios cuantitativos
+                            </h3>
+                            <ul class="space-y-2 text-sm">
+                                <li class="flex items-center">
+                                    <span class="w-2 h-2 bg-yellow-500 rounded-full mr-3"></span>
+                                    <strong>RD$55,076,707</strong> de ahorro directo (10.35% del valor original de la deuda)
+                                </li>
+                                <li class="flex items-center">
+                                    <span class="w-2 h-2 bg-yellow-500 rounded-full mr-3"></span>
+                                    Transformación de <strong>12 pagarés</strong> variables en <strong>10 pagos iguales</strong>, mejorando la previsibilidad financiera
+                                </li>
+                                <li class="flex items-center">
+                                    <span class="w-2 h-2 bg-yellow-500 rounded-full mr-3"></span>
+                                    Flexibilización de plazos adaptados al flujo de caja operativo de la empresa
+                                </li>
+                            </ul>
+                        </div>
+                        
+                        <!-- Beneficios Cualitativos -->
+                        <div class="hover-lift p-4 bg-white rounded-lg shadow border-l-4 border-blue-500">
+                            <h3 class="text-lg font-bold text-blue-700 mb-3 flex items-center">
+                                🤝 Beneficios cualitativos
+                            </h3>
+                            <ul class="space-y-2 text-sm">
+                                <li class="flex items-center">
+                                    <span class="w-2 h-2 bg-yellow-500 rounded-full mr-3"></span>
+                                    Preservación de la relación crediticia con el <strong>Banco de Reservas</strong>, permitiendo acceso futuro a financiamiento
+                                </li>
+                                <li class="flex items-center">
+                                    <span class="w-2 h-2 bg-yellow-500 rounded-full mr-3"></span>
+                                    Evitación de procesos legales y costos asociados a embargos o litigios
+                                </li>
+                                <li class="flex items-center">
+                                    <span class="w-2 h-2 bg-yellow-500 rounded-full mr-3"></span>
+                                    Mantenimiento de la operatividad y capacidad para licitar nuevos proyectos
+                                </li>
+                            </ul>
+                        </div>
+                        
+                        <!-- Lecciones Aprendidas -->
+                        <div class="hover-lift p-4 bg-white rounded-lg shadow border-l-4 border-purple-500">
+                            <h3 class="text-lg font-bold text-purple-700 mb-3 flex items-center">
+                                🎓 Lecciones aprendidas
+                            </h3>
+                            <ul class="space-y-2 text-sm">
+                                <li class="flex items-center">
+                                    <span class="w-2 h-2 bg-yellow-500 rounded-full mr-3"></span>
+                                    La aplicación rigurosa de modelos matemáticos financieros facilita negociaciones equitativas
+                                </li>
+                                <li class="flex items-center">
+                                    <span class="w-2 h-2 bg-yellow-500 rounded-full mr-3"></span>
+                                    El enfoque colaborativo genera mejores resultados que las confrontaciones litigiosas
+                                </li>
+                                <li class="flex items-center">
+                                    <span class="w-2 h-2 bg-yellow-500 rounded-full mr-3"></span>
+                                    Las reestructuraciones preventivas son más efectivas que las reactivas
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="w-1/3">
+                        <div class="bg-white p-4 rounded-lg shadow-lg hover-lift">
+                            <h4 class="text-center font-bold text-blue-900 mb-4">Bancos Múltiples Supervisados por la Superintendencia de Bancos</h4>
+                            <img src="https://santanaripoll.com/wp-content/uploads/2022/02/Entidades-financieras-con-capital-extranjero-en-la-Republica-Dominicana.jpg" alt="Sistema financiero dominicano" class="w-full rounded hover:scale-105 transition-transform">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="logo">
+                <div class="bg-white p-2 rounded shadow hover-lift">
+                    <svg width="100" height="50" viewBox="0 0 100 60">
+                        <rect x="10" y="10" width="80" height="40" fill="#002f5d"/>
+                        <text x="50" y="35" text-anchor="middle" fill="white" font-family="Montserrat" font-size="16" font-weight="bold">DC-SRL</text>
+                    </svg>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 12: Conclusiones -->
+        <div class="slide" id="slide12" style="display: none;">
+            <div class="side-decoration"></div>
+            <div class="slide-content">
+                <h1 class="slide-title text-3xl">Conclusiones y recomendaciones</h1>
+                <div class="accent-bar"></div>
+                
+                <div class="flex items-start h-full">
+                    <div class="w-2/3 pr-6 space-y-4">
+                        <p class="hover-lift p-4 bg-white rounded-lg shadow text-base">
+                            El caso de <strong>Dominican Constructora, SRL</strong> demuestra que la reestructuración financiera adecuadamente planificada puede transformar una crisis en una oportunidad de fortalecimiento empresarial:
+                        </p>
+                        
+                        <div class="space-y-3">
+                            <div class="hover-lift p-3 bg-white rounded-lg shadow">
+                                <div class="flex items-center">
+                                    <span class="w-2 h-2 bg-yellow-500 rounded-full mr-3"></span>
+                                    La negociación estratégica y la aplicación rigurosa de modelos matemáticos generaron un ahorro significativo de RD$55 millones (10.35%)
+                                </div>
+                            </div>
+                            
+                            <div class="hover-lift p-3 bg-white rounded-lg shadow">
+                                <div class="flex items-center">
+                                    <span class="w-2 h-2 bg-yellow-500 rounded-full mr-3"></span>
+                                    El enfoque colaborativo entre deudor y acreedor produjo una solución <strong>win-win</strong> que evitó costos legales
+                                </div>
+                            </div>
+                            
+                            <div class="hover-lift p-3 bg-white rounded-lg shadow">
+                                <div class="flex items-center">
+                                    <span class="w-2 h-2 bg-yellow-500 rounded-full mr-3"></span>
+                                    La equidad matemática garantizó la protección de intereses de ambas partes
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="hover-lift p-4 bg-blue-50 rounded-lg shadow border-l-4 border-blue-900">
+                            <h4 class="text-lg font-bold text-blue-900 mb-2">Recomendaciones para el sector:</h4>
+                            <ul class="space-y-2 text-sm">
+                                <li class="flex items-center">
+                                    <span class="w-2 h-2 bg-yellow-500 rounded-full mr-3"></span>
+                                    Implementar sistemas de alerta temprana de riesgo financiero
+                                </li>
+                                <li class="flex items-center">
+                                    <span class="w-2 h-2 bg-yellow-500 rounded-full mr-3"></span>
+                                    Capacitar al personal en técnicas de reestructuración y negociación
+                                </li>
+                                <li class="flex items-center">
+                                    <span class="w-2 h-2 bg-yellow-500 rounded-full mr-3"></span>
+                                    Establecer protocolos de comunicación proactiva con entidades financieras
+                                </li>
+                                <li class="flex items-center">
+                                    <span class="w-2 h-2 bg-yellow-500 rounded-full mr-3"></span>
+                                    Desarrollar modelos de proyección financiera más robustos
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="w-1/3">
+                        <img src="https://www.constructorallodra.com/wp-content/uploads/2018/09/56-llodra_constructora-construccion-santo_domingo-republica_dominicana-edificios-supermercados-aeropuertos-diseno_arquitectonico-infraestructura-residencias.jpg" alt="Construcción moderna República Dominicana" class="w-full rounded-lg shadow-lg hover-lift mb-4" style="transition: transform 0.3s ease, filter 0.3s ease;">
+                        
+                        <div class="bg-gradient-to-r from-blue-500 to-blue-700 text-white p-4 rounded-lg shadow-lg hover-lift text-center">
+                            <h4 class="font-bold mb-2">¡Gracias por su atención!</h4>
+                            <p class="text-sm">Presentación Doctoral</p>
+                            <p class="text-xs mt-2">Ulises Ramírez Fondeur</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="logo">
+                <div class="bg-white p-2 rounded shadow hover-lift">
+                    <svg width="100" height="50" viewBox="0 0 100 60">
+                        <rect x="10" y="10" width="80" height="40" fill="#002f5d"/>
+                        <text x="50" y="35" text-anchor="middle" fill="white" font-family="Montserrat" font-size="16" font-weight="bold">DC-SRL</text>
+                    </svg>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let currentSlide = 1;
+        const totalSlides = 12;
+
+        function showSlide(n) {
+            // Ocultar todas las slides
+            for (let i = 1; i <= totalSlides; i++) {
+                const slide = document.getElementById(`slide${i}`);
+                if (slide) {
+                    slide.style.display = 'none';
+                }
+            }
+            
+            // Mostrar la slide actual
+            const activeSlide = document.getElementById(`slide${n}`);
+            if (activeSlide) {
+                activeSlide.style.display = 'block';
+            }
+            
+            // Actualizar contador
+            document.getElementById('slideCounter').textContent = `${n} / ${totalSlides}`;
+            
+            // Actualizar botones
+            document.getElementById('prevBtn').disabled = (n === 1);
+            document.getElementById('nextBtn').disabled = (n === totalSlides);
+            
+            // Scroll al top
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function nextSlide() {
+            if (currentSlide < totalSlides) {
+                currentSlide++;
+                showSlide(currentSlide);
+            }
+        }
+
+        function previousSlide() {
+            if (currentSlide > 1) {
+                currentSlide--;
+                showSlide(currentSlide);
+            }
+        }
+
+        // Navegación por teclado
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'ArrowRight') nextSlide();
+            if (e.key === 'ArrowLeft') previousSlide();
+            if (e.key === 'Home') { currentSlide = 1; showSlide(1); }
+            if (e.key === 'End') { currentSlide = totalSlides; showSlide(totalSlides); }
+        });
+
+        // Navegación táctil (swipe)
+        let startX = 0;
+        document.addEventListener('touchstart', function(e) {
+            startX = e.touches[0].clientX;
+        });
+
+        document.addEventListener('touchend', function(e) {
+            const endX = e.changedTouches[0].clientX;
+            const diff = startX - endX;
+            
+            if (Math.abs(diff) > 50) {
+                if (diff > 0) {
+                    nextSlide();
+                } else {
+                    previousSlide();
+                }
+            }
+        });
+
+        // Inicializar
+        showSlide(1);
+    </script>
+</body>
+</html>
