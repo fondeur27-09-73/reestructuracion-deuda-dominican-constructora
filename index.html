@@ -74,40 +74,40 @@
             transition: width 0.3s ease;
         }
 
-        /* BIU Logo */
-        .biu-logo {
-            position: fixed;
-            top: 12px;
-            left: 20px;
-            z-index: 1002;
+        /* BIU Logo SOLO para slide 1 */
+        .biu-logo-slide1 {
+            position: absolute;
+            right: 40px;
+            bottom: 40px;
+            z-index: 20;
             transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             transform-style: preserve-3d;
             cursor: pointer;
         }
 
-        .biu-logo:hover {
-            transform: translateY(-3px) translateZ(20px) rotateX(5deg);
+        .biu-logo-slide1:hover {
+            transform: translateY(-5px) translateZ(20px) rotateX(5deg);
         }
 
         .biu-logo-container {
             background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
-            padding: 8px 12px;
-            border-radius: 10px;
+            padding: 12px 16px;
+            border-radius: 12px;
             box-shadow: 
-                0 4px 15px rgba(0, 47, 93, 0.2),
-                0 2px 8px rgba(0, 0, 0, 0.1),
-                inset 0 1px 0 rgba(255, 255, 255, 0.8);
-            border: 1px solid rgba(0, 47, 93, 0.1);
+                0 6px 20px rgba(0, 0, 0, 0.3),
+                0 3px 10px rgba(0, 0, 0, 0.2),
+                inset 0 1px 0 rgba(255, 255, 255, 0.9);
+            border: 2px solid rgba(255, 255, 255, 0.8);
             position: relative;
             overflow: hidden;
         }
 
-        .biu-logo:hover .biu-logo-container {
+        .biu-logo-slide1:hover .biu-logo-container {
             box-shadow: 
-                0 8px 25px rgba(0, 47, 93, 0.3),
-                0 4px 15px rgba(0, 0, 0, 0.15),
-                inset 0 1px 0 rgba(255, 255, 255, 0.9),
-                0 0 20px rgba(247, 201, 72, 0.2);
+                0 10px 30px rgba(0, 0, 0, 0.4),
+                0 5px 20px rgba(0, 0, 0, 0.25),
+                inset 0 1px 0 rgba(255, 255, 255, 1),
+                0 0 25px rgba(247, 201, 72, 0.3);
             transform: scale(1.05);
         }
 
@@ -122,13 +122,13 @@
             transition: left 0.6s ease;
         }
 
-        .biu-logo:hover .biu-logo-container::before {
+        .biu-logo-slide1:hover .biu-logo-container::before {
             left: 100%;
         }
 
         .biu-text {
             font-weight: 700;
-            font-size: 14px;
+            font-size: 18px;
             background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 50%, #1e40af 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
@@ -139,9 +139,9 @@
         }
 
         .biu-subtitle {
-            font-size: 8px;
-            color: #64748b;
-            font-weight: 500;
+            font-size: 9px;
+            color: #1e40af;
+            font-weight: 600;
             margin-top: 2px;
             letter-spacing: 0.5px;
         }
@@ -337,37 +337,14 @@
             box-shadow: 0 5px 15px rgba(247, 201, 72, 0.7), 0 2px 5px rgba(247, 201, 72, 0.4);
         }
 
-        .logo {
-            position: absolute;
-            right: 40px;
-            bottom: 40px;
-            z-index: 20;
-            transition: all 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
-            transform-style: preserve-3d;
-            transform: translateZ(20px);
-        }
-
-        .slide-container:hover .logo {
-            transform: translateZ(50px) translateY(-10px) rotateY(-10deg);
-        }
-
-        .bg-white {
-            transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
-        }
-
-        .slide-container:hover .bg-white {
-            box-shadow: 0 15px 30px rgba(0,0,0,0.4), 0 5px 15px rgba(0,0,0,0.3);
-        }
-
-        /* Float Animation for Logo */
+        /* Float Animation for BIU Logo */
         @keyframes float {
             0% { transform: translateZ(20px) translateY(0px); }
             50% { transform: translateZ(30px) translateY(-10px); }
             100% { transform: translateZ(20px) translateY(0px); }
         }
 
-        .slide-container:hover .logo .bg-white {
+        .slide-container:hover .biu-logo-slide1 .biu-logo-container {
             animation: float 3s ease-in-out infinite;
         }
 
@@ -1006,15 +983,6 @@
     <!-- Progress bar -->
     <div class="progress-bar" id="progressBar"></div>
 
-    <!-- BIU Logo -->
-    <div class="biu-logo">
-        <div class="biu-logo-container">
-            <div class="biu-text">BIU</div>
-            <div class="biu-subtitle">BROWARD INTERNATIONAL</div>
-            <div class="biu-subtitle">UNIVERSITY</div>
-        </div>
-    </div>
-
     <!-- Navigation -->
     <nav class="nav-container" id="navbar">
         <div class="nav-menu">
@@ -1034,7 +1002,7 @@
     </nav>
 
     <div class="presentation-container">
-        <!-- Slide 1: Portada -->
+        <!-- Slide 1: Portada - CON LOGO BIU -->
         <section class="slide-section hero-slide" id="slide1">
             <div class="slide-container fade-in">
                 <div class="slide-background">
@@ -1056,18 +1024,18 @@
                         <p><strong>Fecha:</strong> 28 Septiembre del 2025</p>
                     </div>
                 </div>
-                <div class="logo">
-                    <div class="bg-white p-2 rounded shadow">
-                        <svg height="60" viewbox="0 0 100 60" width="100">
-                            <rect fill="#002f5d" height="40" width="80" x="10" y="10"></rect>
-                            <text fill="white" font-family="Montserrat" font-size="16" font-weight="bold" text-anchor="middle" x="50" y="35">DC-SRL</text>
-                        </svg>
+                <!-- LOGO BIU SOLO EN SLIDE 1 -->
+                <div class="biu-logo-slide1">
+                    <div class="biu-logo-container">
+                        <div class="biu-text">BIU</div>
+                        <div class="biu-subtitle">BROWARD INTERNATIONAL</div>
+                        <div class="biu-subtitle">UNIVERSITY</div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Slide 2: Índice -->
+        <!-- Slide 2: Índice - SIN LOGOS -->
         <section class="slide-section regular-slide" id="slide2">
             <div class="slide-container fade-in">
                 <div class="side-decoration right"></div>
@@ -1131,18 +1099,10 @@
                         </div>
                     </div>
                 </div>
-                <div class="logo">
-                    <div class="bg-white p-2 rounded shadow">
-                        <svg height="60" viewbox="0 0 100 60" width="100">
-                            <rect fill="#002f5d" height="40" width="80" x="10" y="10"></rect>
-                            <text fill="white" font-family="Montserrat" font-size="16" font-weight="bold" text-anchor="middle" x="50" y="35">DC-SRL</text>
-                        </svg>
-                    </div>
-                </div>
             </div>
         </section>
 
-        <!-- Slide 3: Introducción -->
+        <!-- Slide 3: Introducción - SIN LOGOS -->
         <section class="slide-section regular-slide" id="slide3">
             <div class="slide-container fade-in">
                 <div class="side-decoration left"></div>
@@ -1177,18 +1137,10 @@
                         </div>
                     </div>
                 </div>
-                <div class="logo">
-                    <div class="bg-white p-2 rounded shadow">
-                        <svg height="50" viewbox="0 0 100 60" width="80">
-                            <rect fill="#002f5d" height="40" width="80" x="10" y="10"></rect>
-                            <text fill="white" font-family="Montserrat" font-size="16" font-weight="bold" text-anchor="middle" x="50" y="35">DC-SRL</text>
-                        </svg>
-                    </div>
-                </div>
             </div>
         </section>
 
-        <!-- Slide 4: Marco Teórico -->
+        <!-- Slide 4: Marco Teórico - SIN LOGOS -->
         <section class="slide-section regular-slide" id="slide4">
             <div class="slide-container fade-in">
                 <div class="side-decoration left"></div>
@@ -1227,18 +1179,10 @@
                         </div>
                     </div>
                 </div>
-                <div class="logo">
-                    <div class="bg-white p-2 rounded shadow">
-                        <svg height="60" viewbox="0 0 100 60" width="100">
-                            <rect fill="#002f5d" height="40" width="80" x="10" y="10"></rect>
-                            <text fill="white" font-family="Montserrat" font-size="16" font-weight="bold" text-anchor="middle" x="50" y="35">DC-SRL</text>
-                        </svg>
-                    </div>
-                </div>
             </div>
         </section>
 
-        <!-- Slide 5: Metodología -->
+        <!-- Slide 5: Metodología - SIN LOGOS -->
         <section class="slide-section regular-slide" id="slide5">
             <div class="slide-container fade-in">
                 <div class="side-decoration left"></div>
@@ -1280,18 +1224,10 @@
                         </div>
                     </div>
                 </div>
-                <div class="logo">
-                    <div class="bg-white p-2 rounded shadow">
-                        <svg height="60" viewbox="0 0 100 60" width="100">
-                            <rect fill="#002f5d" height="40" width="80" x="10" y="10"></rect>
-                            <text fill="white" font-family="Montserrat" font-size="16" font-weight="bold" text-anchor="middle" x="50" y="35">DC-SRL</text>
-                        </svg>
-                    </div>
-                </div>
             </div>
         </section>
 
-        <!-- Slide 6: Perfil de la Empresa -->
+        <!-- Slide 6: Perfil de la Empresa - SIN LOGOS -->
         <section class="slide-section regular-slide" id="slide6">
             <div class="slide-container fade-in">
                 <div class="side-decoration left"></div>
@@ -1335,18 +1271,10 @@
                         </div>
                     </div>
                 </div>
-                <div class="logo">
-                    <div class="bg-white p-2 rounded shadow">
-                        <svg height="60" viewbox="0 0 100 60" width="100">
-                            <rect fill="#002f5d" height="40" width="80" x="10" y="10"></rect>
-                            <text fill="white" font-family="Montserrat" font-size="16" font-weight="bold" text-anchor="middle" x="50" y="35">DC-SRL</text>
-                        </svg>
-                    </div>
-                </div>
             </div>
         </section>
 
-        <!-- Slide 7: Estructura de Deuda - CORREGIDA -->
+        <!-- Slide 7: Estructura de Deuda - SIN LOGOS -->
         <section class="slide-section regular-slide" id="slide7">
             <div class="slide-container fade-in">
                 <div class="side-decoration left"></div>
@@ -1400,18 +1328,10 @@
                         <div style="font-size: 12px; font-style: italic; color: #666; margin-top: 10px;">Fuente: Registros financieros de Dominican Constructora, SRL (2025)</div>
                     </div>
                 </div>
-                <div class="logo">
-                    <div class="bg-white p-2 rounded shadow">
-                        <svg height="50" viewbox="0 0 100 60" width="100">
-                            <rect fill="#002f5d" height="40" width="80" x="10" y="10"></rect>
-                            <text fill="white" font-family="Montserrat" font-size="16" font-weight="bold" text-anchor="middle" x="50" y="35">DC-SRL</text>
-                        </svg>
-                    </div>
-                </div>
             </div>
         </section>
 
-        <!-- Slide 8: Proceso de Reestructuración - CORREGIDA -->
+        <!-- Slide 8: Proceso de Reestructuración - SIN LOGOS -->
         <section class="slide-section regular-slide" id="slide8">
             <div class="slide-container fade-in">
                 <div class="side-decoration left"></div>
@@ -1459,18 +1379,10 @@
                         </svg>
                     </div>
                 </div>
-                <div class="logo">
-                    <div class="bg-white p-2 rounded shadow">
-                        <svg height="60" viewbox="0 0 100 60" width="100">
-                            <rect fill="#002f5d" height="40" width="80" x="10" y="10"></rect>
-                            <text fill="white" font-family="Montserrat" font-size="16" font-weight="bold" text-anchor="middle" x="50" y="35">DC-SRL</text>
-                        </svg>
-                    </div>
-                </div>
             </div>
         </section>
 
-        <!-- Slide 9: Resultados -->
+        <!-- Slide 9: Resultados - SIN LOGOS -->
         <section class="slide-section regular-slide" id="slide9">
             <div class="slide-container fade-in">
                 <div class="side-decoration left"></div>
@@ -1519,18 +1431,10 @@
                         </div>
                     </div>
                 </div>
-                <div class="logo">
-                    <div class="bg-white p-2 rounded shadow">
-                        <svg height="50" viewbox="0 0 100 60" width="100">
-                            <rect fill="#002f5d" height="40" width="80" x="10" y="10"></rect>
-                            <text fill="white" font-family="Montserrat" font-size="16" font-weight="bold" text-anchor="middle" x="50" y="35">DC-SRL</text>
-                        </svg>
-                    </div>
-                </div>
             </div>
         </section>
 
-        <!-- Slide 10: Comparación -->
+        <!-- Slide 10: Comparación - SIN LOGOS -->
         <section class="slide-section regular-slide" id="slide10">
             <div class="slide-container fade-in">
                 <div class="side-decoration left"></div>
@@ -1591,18 +1495,10 @@
                         <div style="font-size: 14px; font-style: italic; color: #666; margin-top: 15px;">Fuente: Análisis financiero - Dominican Constructora, SRL (2025)</div>
                     </div>
                 </div>
-                <div class="logo">
-                    <div class="bg-white p-2 rounded shadow">
-                        <svg height="60" viewbox="0 0 100 60" width="100">
-                            <rect fill="#002f5d" height="40" width="80" x="10" y="10"></rect>
-                            <text fill="white" font-family="Montserrat" font-size="16" font-weight="bold" text-anchor="middle" x="50" y="35">DC-SRL</text>
-                        </svg>
-                    </div>
-                </div>
             </div>
         </section>
 
-        <!-- Slide 11: Beneficios - CORREGIDA -->
+        <!-- Slide 11: Beneficios - SIN LOGOS -->
         <section class="slide-section regular-slide" id="slide11">
             <div class="slide-container fade-in">
                 <div class="side-decoration left"></div>
@@ -1657,18 +1553,10 @@
                         </div>
                     </div>
                 </div>
-                <div class="logo">
-                    <div class="bg-white p-2 rounded shadow">
-                        <svg height="60" viewbox="0 0 100 60" width="100">
-                            <rect fill="#002f5d" height="40" width="80" x="10" y="10"></rect>
-                            <text fill="white" font-family="Montserrat" font-size="16" font-weight="bold" text-anchor="middle" x="50" y="35">DC-SRL</text>
-                        </svg>
-                    </div>
-                </div>
             </div>
         </section>
 
-        <!-- Slide 12: Conclusiones -->
+        <!-- Slide 12: Conclusiones - SIN LOGOS -->
         <section class="slide-section regular-slide" id="slide12">
             <div class="slide-container fade-in">
                 <div class="side-decoration left"></div>
@@ -1701,14 +1589,6 @@
                                 <img alt="Ciudad moderna con proyectos de construcción" src="https://page.gensparksite.com/slides_images/21bf29dbeb81942dae95eb7d2c6a0425.jpg"/>
                             </div>
                         </div>
-                    </div>
-                </div>
-                <div class="logo">
-                    <div class="bg-white p-2 rounded shadow">
-                        <svg height="50" viewbox="0 0 100 60" width="80">
-                            <rect fill="#002f5d" height="40" width="80" x="10" y="10"></rect>
-                            <text fill="white" font-family="Montserrat" font-size="16" font-weight="bold" text-anchor="middle" x="50" y="35">DC-SRL</text>
-                        </svg>
                     </div>
                 </div>
             </div>
